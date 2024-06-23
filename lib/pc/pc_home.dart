@@ -52,7 +52,7 @@ class _PCHomePageState extends State<PCHomePage> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   image: const DecorationImage(
-                    image: AssetImage("assets/images/book_default.png"),
+                    image: AssetImage("assets/images/comic_default.jpg"),
                     fit: BoxFit.cover,
                   ),
                 ),

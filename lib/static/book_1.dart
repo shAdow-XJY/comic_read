@@ -14,10 +14,10 @@ final BookModel model1 = BookModel(
     BookChapter(
         chapterId: '0',
         chapterName: 'chapterName 1',
-        chapterContent: 'chapterContent 1'),
+        chapterContent: 'https://16871852.s21i.faiusr.com/2/ABUIABACGAAgpqCOhAYolpuYjgEwlAo40Q8.jpg'),
     BookChapter(
         chapterId: '1',
         chapterName: 'chapterName 2',
-        chapterContent: 'chapterContent 2'),
+        chapterContent: 'https://16871852.s21i.faiusr.com/2/ABUIABACGAAgpaCOhAYoxs-96gUwlAo40Q8.jpg'),
   ],
 );

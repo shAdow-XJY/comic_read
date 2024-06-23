@@ -18,9 +18,10 @@ class _PCReadPageState extends State<PCReadPage> {
   /// 页面切换初始化
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  String _selectedFont = 'NotoSerifSC';
   int currentButtonIndex = -1;
   bool showSettingArea = false;
+
+  double _imageHeight = 0.0; // 初始化图片高度
 
   @override
   Widget build(BuildContext context) {
@@ -121,10 +122,31 @@ class _PCReadPageState extends State<PCReadPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      widget.bookModel.chapterList.elementAt(widget.bookModel.currentChapterIndex).chapterContent,
-                      style: TextStyle(fontFamily: _selectedFont),
+                    LayoutBuilder(
+                      builder: (context, constraints) {
+                        return Image.network(
+                          widget.bookModel.chapterList.elementAt(widget.bookModel.currentChapterIndex).chapterContent,
+                          key: GlobalKey(), // 添加 GlobalKey
+                          loadingBuilder: (BuildContext context, Widget child,
+                              ImageChunkEvent? loadingProgress) {
+                            if (loadingProgress == null) {
+                              // 加载完成后获取图片高度
+                              WidgetsBinding.instance.addPostFrameCallback((_) {
+                                final RenderBox renderBox =
+                                context.findRenderObject() as RenderBox;
+                                setState(() {
+                                  _imageHeight = renderBox.size.height;
+                                });
+                              });
+                            }
+                            return loadingProgress == null
+                                ? child
+                                : const Center(child: CircularProgressIndicator());
+                          },
+                        );
+                      },
                     ),
+                    // SizedBox(height: _imageHeight), // 根据图片高度调整间距
                     Container(
                       padding: const EdgeInsets.all(16),
                       child: Text('这里是底部的内容。'),
