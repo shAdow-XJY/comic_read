@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../../pc/pc_chapter_page.dart';
-import '../../pc/pc_home.dart';
-import '../../pc/pc_read_page.dart';
-import '../../view_model/book_model.dart';
-
+import '../../../view_model/book_model.dart';
+import '../../controller/pc/pc_chapter_page.dart';
+import '../../controller/pc/pc_home.dart';
+import '../../controller/pc/pc_read_page.dart';
 /// 需要引入跳转页面地址
 
 /// 配置路由
-final routes = {
+final pcRoutes = {
   '/': (context) => const PCHomePage(),
   '/home': (context) => const PCHomePage(),
   // 路由表中的函数不需要处理参数

@@ -1,5 +1,6 @@
 
 import '../static/book_1.dart';
+import '../static/book_2.dart';
 import 'book_model.dart';
 
 class BookManager {
@@ -12,5 +13,6 @@ class BookManager {
   // 书籍列表
   final List<BookModel> bookList = [
     model1,
+    model2
   ];
 }

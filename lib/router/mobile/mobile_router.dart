@@ -1,39 +1,52 @@
-// import 'package:flutter/material.dart';
-//
-// import '../../pages/common/cloud_page/cloud_page.dart';
-// import '../../pages/common/pre_page/pre_page.dart';
-// import '../../pages/common/setting_page/setting_page.dart';
-// import '../../pages/mobile/export_page/mobile_export_page.dart';
-// import '../../pages/mobile/home_page/mobile_home_page.dart';
-// /// 需要引入跳转页面地址
-//
-// /// 配置路由
-// final routes = {
-//   /// 前面是自己的命名 后面是加载的方法
-//   /// 不用传参的写法
-//   '/': (context) => const PrePage(),
-//   '/home': (context) => const MobileHomePage(),
-//   '/export': (context) => const MobileExportPage(),
-//   '/cloud': (context) => const CloudPage(),
-//   '/setting': (context) => const SettingPage(),
-// };
-//
-// /// 固定写法，统一处理，无需更改
-// var mobileGenerateRoute = (RouteSettings settings) {
-//   final String? name = settings.name;
-//   if (name != null) {
-//     final Function? pageContentBuilder = routes[name];
-//     if (pageContentBuilder != null) {
-//       if (settings.arguments != null) {
-//         final Route route = MaterialPageRoute(
-//             builder: (context) =>
-//                 pageContentBuilder(context, arguments: settings.arguments));
-//         return route;
-//       } else {
-//         final Route route = MaterialPageRoute(
-//             builder: (context) => pageContentBuilder(context));
-//         return route;
-//       }
-//     }
-//   }
-// };
+import 'package:flutter/material.dart';
+
+import '../../../view_model/book_model.dart';
+import '../../controller/mobile/mobile_chapter_page.dart';
+import '../../controller/mobile/mobile_home.dart';
+import '../../controller/mobile/mobile_read_page.dart';
+
+/// 移动端路由表
+final mobileRoutes = {
+  '/': (context) => const MobileHomePage(),
+  '/home': (context) => const MobileHomePage(),
+};
+
+/// 移动端动态路由生成器
+Route<dynamic>? mobileGenerateRoute(RouteSettings settings) {
+  final String? name = settings.name;
+  final Object? arguments = settings.arguments;
+
+  switch (name) {
+    case '/':
+      return MaterialPageRoute(builder: (context) => const MobileHomePage());
+    case '/home':
+      return MaterialPageRoute(builder: (context) => const MobileHomePage());
+    case '/chapterDirectory':
+      if (arguments is BookModel) {
+        return MaterialPageRoute(
+          builder: (context) => MobileChapterPage(bookModel: arguments),
+        );
+      }
+      return _mobileErrorRoute();
+    case '/read':
+      if (arguments is BookModel) {
+        return MaterialPageRoute(
+          builder: (context) => MobileReadPage(bookModel: arguments),
+        );
+      }
+      return _mobileErrorRoute();
+    default:
+      return _mobileErrorRoute();
+  }
+}
+
+Route<dynamic> _mobileErrorRoute() {
+  return MaterialPageRoute(
+    builder: (context) {
+      return Scaffold(
+        appBar: AppBar(title: const Text('Error')),
+        body: const Center(child: Text('Page not found')),
+      );
+    },
+  );
+}
