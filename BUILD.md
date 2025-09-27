@@ -1,6 +1,6 @@
 ## pub cmd
-flutter build web --release --base-href /comic_read/
-flutter build web --no-web-resources-cdn --release --base-href /comic_read/
+flutter build web --release --base-href /XJY.ENT.READ.comicRead/
+flutter build web --no-web-resources-cdn --release --base-href /XJY.ENT.READ.comicRead/
 <details>
 <summary>flutter build web</summary>
 <div>
@@ -25,7 +25,7 @@ flutter build web --no-web-resources-cdn --release
 
 > cd /d path
 # pub cmd
-cd /d E:\AndroidStudioProjects\novel_read
+cd /d E:\AndroidStudioProjects\XJY.ENT.READ.comicRead
 set http_proxy=127.0.0.1:10809
 set https_proxy=127.0.0.1:10809
 

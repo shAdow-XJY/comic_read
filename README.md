@@ -1,7 +1,7 @@
 # novel_read
 
 ## website
-[https://shadowplusing.website/comic_read/](https://shadowplusing.website/comic_read/)
+[XJY.ENT.READ.comicRead](https://shadowplusing.cn/XJY.ENT.READ.comicRead/)
 
 ## reference
 1. []()

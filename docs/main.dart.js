@@ -21416,7 +21416,7 @@ A.a91.prototype={
 $1(a){var s=A.df().b
 if(s==null)s=null
 else{s=s.canvasKitBaseUrl
-if(s==null)s=null}return(s==null?"canvaskit/":s)+a},
+if(s==null)s=null}return(s==null?"https://www.gstatic.com/flutter-canvaskit/18b71d647a292a980abb405ac7d16fe1f0b20434/":s)+a},
 $S:157}
 A.P5.prototype={
 cd(){B.c.a_(this.a.a.save())},
